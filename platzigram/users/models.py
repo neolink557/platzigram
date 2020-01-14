@@ -9,8 +9,8 @@ class Profile(models.Model):
     biography = models.TextField(blank = True)
     phone_number = models.CharField(max_length = 20, blank = True)
 
+    upload_to = 'users/pictures',
     picture = models.ImageField(
-              upload_to = 'e:/users/braya/documents/django/platzigram/pictures',
               blank = True,
               null = True)
 
