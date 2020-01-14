@@ -1,1 +1,1 @@
-\media
+E:\Users\Braya\Documents\django\platzigram\media
