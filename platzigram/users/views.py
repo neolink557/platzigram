@@ -16,7 +16,7 @@ def update_profile_view(request):
             profile.picture = data['picture']
             profile.save()
             print(form.cleaned_data)
-            return redirect('feed')
+            return redirect('posts:feed')
     else:
         form = ProfileForm()
 
@@ -34,7 +34,7 @@ def login_view(request):
         user = authenticate(request, username = username, password = password)
         if user is not None:
             login(request, user)
-            return redirect('feed')
+            return redirect('posts:feed')
         else:
             return render(request, 'users/login.html',{'error': 'Invalid username and password'})
     return render(request, 'users/login.html')
@@ -46,7 +46,7 @@ def signup_view(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('users:login')
     else:
         form = SignupForm()
     return render(
@@ -59,4 +59,4 @@ def signup_view(request):
 @login_required
 def logout_view(request):
     logout(request)
-    return redirect('login')
+    return redirect('users:login')
